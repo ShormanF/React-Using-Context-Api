@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ContextProvider from './Components/ContextProvider';
+import MyContext from './config/Context'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <ContextProvider>
+     <MyContext.Consumer>
+     {data => <div>{data.employees.map(d => <ul key={d.id}><li>Employee name: {d.employee_name}</li>
+     <br></br>
+     <li>Employee Salary: {d.employee_salary}</li>
+     <li>Employee Age: {d.employee_age}</li>
+   
+     </ul>)}</div>}
+  
+       
+     </MyContext.Consumer>
+   </ContextProvider>
     </div>
   );
 }
